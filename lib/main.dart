@@ -5,17 +5,20 @@ void main() => runApp(MyApp());
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    return MyAppState();
+    return _MyAppState();
   }
 }
 
-class MyAppState extends State<MyApp> {
-  var questionIndex = 0;
+/* _ sysntax ..converts public class to private class
+can only be used MyApp class...class located on other files cannot use it*/
+class _MyAppState extends State<MyApp> {
+  //_ syntax private property
+  var _questionIndex = 0;
 
-  void AnswerQuestion() {
+  void _AnswerQuestion() {
     setState(() {
       print('setState()  called!');
-      questionIndex = (questionIndex + 1) % 2;
+      _questionIndex = (_questionIndex + 1) % 2;
     });
 
     print('AnswerQuestion()  called!');
@@ -33,18 +36,18 @@ class MyAppState extends State<MyApp> {
       appBar: AppBar(title: Text('My First App')),
       body: Column(
         children: <Widget>[
-          Text(questions[questionIndex]),
+          Text(questions[_questionIndex]),
           RaisedButton(
             child: Text('Answer 1'),
-            onPressed: AnswerQuestion,
+            onPressed: _AnswerQuestion,
           ),
           RaisedButton(
             child: Text('Answer 1'),
-            onPressed: AnswerQuestion,
+            onPressed: _AnswerQuestion,
           ),
           RaisedButton(
             child: Text('Answer 2'),
-            onPressed: AnswerQuestion,
+            onPressed: _AnswerQuestion,
           ),
           RaisedButton(
             child: Text('Answer 3'),
