@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import './question.dart';
+import './answer.dart';
 
 void main() => runApp(MyApp());
 
@@ -28,8 +29,18 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     var questions = [
-      'question 1',
-      'question 2',
+      {
+        'questionText': 'what is your favourite color?',
+        'answers': ['red', 'green', 'yello']
+      },
+      {
+        'questionText': 'what is your favourite animal?',
+        'answers': ['deer', 'lion', 'snake']
+      },
+      {
+        'questionText': 'what is your favourite car?',
+        'answers': ['bmw', 'ferrari', 'honda']
+      },
     ];
     print('build()  called!');
     return MaterialApp(
@@ -37,25 +48,11 @@ class _MyAppState extends State<MyApp> {
       appBar: AppBar(title: Text('My First App')),
       body: Column(
         children: <Widget>[
-          Question(questions[_questionIndex]),
-          RaisedButton(
-            child: Text('Answer 1'),
-            onPressed: _AnswerQuestion,
-          ),
-          RaisedButton(
-            child: Text('Answer 1'),
-            onPressed: _AnswerQuestion,
-          ),
-          RaisedButton(
-            child: Text('Answer 2'),
-            onPressed: _AnswerQuestion,
-          ),
-          RaisedButton(
-            child: Text('Answer 3'),
-            onPressed: () {
-              print('answer chosen 3!');
-            },
-          ),
+          Question(questions[_questionIndex]['questionText']),
+          Answer(_AnswerQuestion),
+          Answer(_AnswerQuestion),
+          Answer(_AnswerQuestion),
+          Answer(_AnswerQuestion),
         ],
       ),
     ));
