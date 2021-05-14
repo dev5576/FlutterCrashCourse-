@@ -31,7 +31,7 @@ class _MyAppState extends State<MyApp> {
     var questions = [
       {
         'questionText': 'what is your favourite color?',
-        'answers': ['red', 'green', 'yello']
+        'answers': ['red', 'green', 'yellow']
       },
       {
         'questionText': 'what is your favourite animal?',
@@ -49,10 +49,10 @@ class _MyAppState extends State<MyApp> {
       body: Column(
         children: <Widget>[
           Question(questions[_questionIndex]['questionText']),
-          Answer(_AnswerQuestion),
-          Answer(_AnswerQuestion),
-          Answer(_AnswerQuestion),
-          Answer(_AnswerQuestion),
+          ...(questions[_questionIndex]['answers'] as List<String>)
+              .map((answer) {
+                 return Answer(_AnswerQuestion, answer);
+          }).toList()
         ],
       ),
     ));
