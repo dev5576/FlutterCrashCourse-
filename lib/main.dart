@@ -16,6 +16,20 @@ can only be used MyApp class...class located on other files cannot use it*/
 class _MyAppState extends State<MyApp> {
   //_ syntax private property
   var _questionIndex = 0;
+  final questions = const [
+    {
+      'questionText': 'what is your favourite color?',
+      'answers': ['red', 'green', 'yellow']
+    },
+    {
+      'questionText': 'what is your favourite animal?',
+      'answers': ['deer', 'lion', 'snake']
+    },
+    {
+      'questionText': 'what is your favourite car?',
+      'answers': ['bmw', 'ferrari', 'honda']
+    },
+  ];
 
   void _AnswerQuestion() {
     setState(() {
@@ -28,20 +42,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    var questions = [
-      {
-        'questionText': 'what is your favourite color?',
-        'answers': ['red', 'green', 'yellow']
-      },
-      {
-        'questionText': 'what is your favourite animal?',
-        'answers': ['deer', 'lion', 'snake']
-      },
-      {
-        'questionText': 'what is your favourite car?',
-        'answers': ['bmw', 'ferrari', 'honda']
-      },
-    ];
     print('build()  called!');
     return MaterialApp(
         home: Scaffold(
@@ -51,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           Question(questions[_questionIndex]['questionText']),
           ...(questions[_questionIndex]['answers'] as List<String>)
               .map((answer) {
-                 return Answer(_AnswerQuestion, answer);
+            return Answer(_AnswerQuestion, answer);
           }).toList()
         ],
       ),
